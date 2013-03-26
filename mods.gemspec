@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require File.expand_path('../lib/mods/version', __FILE__)
 
 Gem::Specification.new do |gem|
@@ -19,6 +18,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'nokogiri'
   gem.add_dependency 'nom-xml'
   gem.add_dependency 'iso-639'
+  gem.add_dependency 'rdf'
 
   # Runtime dependencies
   # gem.add_runtime_dependency 'nokogiri'

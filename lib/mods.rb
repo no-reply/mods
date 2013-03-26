@@ -10,6 +10,9 @@ require 'mods/subject'
 require 'mods/title_info'
 require 'mods/version'
 
+require 'rdf'
+require 'rdf/modsrdf'
+
 require 'nokogiri'
 require 'nom/xml'
 
