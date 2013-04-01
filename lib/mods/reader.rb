@@ -21,6 +21,10 @@ module Mods
       normalize_mods
       @mods_ng_xml
     end
+
+    def from_rdf(graph)
+      @mods_ng_xml = Nokogiri::XML('')
+    end
   
     # @param url (String) - url that has mods xml as its content
     # @return Nokogiri::XML::Document

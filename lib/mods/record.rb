@@ -45,6 +45,10 @@ module Mods
       end
     end
 
+    def from_rdf(graph)
+      @mods_ng_xml = Mods::Reader.new.from_rdf(graph)
+    end
+
     # convenience method to call Mods::Reader.new.from_nk_node and to nom
     # @param ns_aware true if the XML parsing should be strict about using namespaces.  Default is true
     # @param node (Nokogiri::XML::Node) - Nokogiri::XML::Node that is the top level element of a mods record
