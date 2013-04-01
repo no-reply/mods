@@ -46,9 +46,25 @@ describe "Mods::Record" do
   context "from_rdf" do
     before(:all) do
       @mods_rdf = RDF::Graph.new
+      record_uri = RDF::URI('http://www.loc.gov/standards/mods/modsrdf/examples/0003')
+      # create an example modsrdf graph
+      statements = [
+                    RDF::Statement.new(record_uri, RDF.type, RDF::MODSRDF.ModsResource),
+                    RDF::Statement.new(RDF::Node('title'), RDF.type, RDF::MADSRDF.Title),
+                    RDF::Statement.new(RDF::Node('title'), RDF::RDFS.label, "Einstien on the Beach"),
+                    RDF::Statement.new(record_uri, RDF::MODSRDF.titlePrincipal, RDF::Node('title'))
+                   ]
+      for statement in statements
+        @mods_rdf << statement
+      end
+
+      @mods_doc = Mods::Record.new.from_rdf(@mods_rdf)
     end
     it "should create a mods Record object" do
-      Mods::Record.new.from_rdf(@mods_rdf).should be_a_kind_of Nokogiri::XML::Document
+      @mods_doc.should be_a_kind_of Nokogiri::XML::Document
+    end
+    it "should have some metadata contents" do
+      @mods_doc
     end
   end
   
