@@ -12,6 +12,7 @@ require 'mods/version'
 
 require 'rdf'
 require 'rdf/modsrdf'
+require 'rdf/madsrdf'
 
 require 'nokogiri'
 require 'nom/xml'
