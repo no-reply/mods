@@ -62,11 +62,13 @@ describe "Mods::Record" do
       @mods_doc = Mods::Record.new
       @mods_doc.from_rdf(@mods_rdf)
     end
+
     it "should create a mods Record object" do
       @mods_doc.should be_a_kind_of Mods::Record
     end
+
     it "should have some metadata contents" do
-      @mods_doc
+      @mods_doc.title_info.text.should == "Einstien on the Beach"
     end
   end
   
