@@ -33,10 +33,11 @@ describe "Mods::Record" do
 
   context "from_url" do
     before(:all) do
-      @mods_doc = Mods::Record.new.from_url(@example_record_url)
+      @mods_doc = Mods::Record.new
+      @mods_doc.from_url(@example_record_url)
     end
     it "should be a mods record" do
-      @mods_doc.should be_a_kind_of Nokogiri::XML::Document
+      @mods_doc.should be_a_kind_of Mods::Record
     end
     it "should raise an error on a bad url" do
       Mods::Record.new.from_url("http://example.org/fake.xml").should raise_error
@@ -58,10 +59,11 @@ describe "Mods::Record" do
         @mods_rdf << statement
       end
 
-      @mods_doc = Mods::Record.new.from_rdf(@mods_rdf)
+      @mods_doc = Mods::Record.new
+      @mods_doc.from_rdf(@mods_rdf)
     end
     it "should create a mods Record object" do
-      @mods_doc.should be_a_kind_of Nokogiri::XML::Document
+      @mods_doc.should be_a_kind_of Mods::Record
     end
     it "should have some metadata contents" do
       @mods_doc
